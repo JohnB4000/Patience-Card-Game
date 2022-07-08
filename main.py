@@ -3,7 +3,7 @@ import pygame, time
 from pygame.locals import *
 import Board
 
-
+# Test comment
 # Starts the Pygame module
 pygame.init()
 pygame.mixer.quit()
