@@ -86,7 +86,7 @@ class Board:
                     self.fromHand = True
 
             # Code to draw 0-3 cards from hand
-            if mouseX > self.handCoords[0][0] and mouseX < self.handCoords[0][0] + 100 and mouseY > self.handCoords[0][1] and mouseY < self.handCoords[0][1] + 140:
+            if mouseX >= self.handCoords[0][0] and mouseX <= self.handCoords[0][0] + 100 and mouseY >= self.handCoords[0][1] and mouseY <= self.handCoords[0][1] + 140:
                     # If there is no more cards in the hand but some in the flippedHand array, it moves them back and flips the back over
                     cards = 0
                     if len(self.hand) == 0 and len(self.flippedHand) > 0:
@@ -155,7 +155,7 @@ class Board:
                         self.fromHand = False
                         self.fromEmpty = False
                 # Else if the card came from the hand and the flipped hand area was clicked then
-                elif self.fromHand and mouseX > self.handCoords[1][0] and mouseX < self.handCoords[1][0] + 100 and mouseY > self.handCoords[1][1] and mouseY < self.handCoords[1][1] + 140:
+                elif self.fromHand and mouseX >= self.handCoords[1][0] and mouseX <= self.handCoords[1][0] + 100 and mouseY >= self.handCoords[1][1] and mouseY <= self.handCoords[1][1] + 140:
                     # Add the card back to the flippedHand array and remove it from the current array
                     self.flippedHand.append(self.current.pop(0))
                     # Set the fromHand and fromEmpty to false so that the card can't be placed back in the hand or on an empty colummn
@@ -188,7 +188,7 @@ class Board:
                 if len(self.current) > 0:
                     # Loops through each column and checks if the first card slot has been clicked
                     for col in range(7):
-                        if mouseX > self.boardCoords[col][0] and mouseX < self.boardCoords[col][0] + 100 and mouseY > self.boardCoords[col][1] and mouseY < self.boardCoords[col][1] + 140 and self.board[col][0] == None:
+                        if mouseX >= self.boardCoords[col][0] and mouseX <= self.boardCoords[col][0] + 100 and mouseY >= self.boardCoords[col][1] and mouseY <= self.boardCoords[col][1] + 140 and self.board[col][0] == None:
                             # If the card is a king or came from an empty slot then it adds the cards in the current array to the board array from the first slot
                             if self.current[0].rank == 13 or self.fromEmpty:
                                 for counter in range(len(self.current)):
@@ -239,7 +239,7 @@ class Board:
                 self.board[col][row].update(self.boardCoords[col][0], self.boardCoords[col][1] + (row * 30) + extra)
                 self.board[col][row].show(screen)
                 # If the mouse is over a card make the cards below display slightly lower so the user can see the hovered card
-                if mouseX > self.boardCoords[col][0] and mouseX < self.boardCoords[col][0] + 100 and mouseY > self.boardCoords[col][1] + (row * 30) and mouseY < self.boardCoords[col][1] + (row * 30) + 30:
+                if mouseX >= self.boardCoords[col][0] and mouseX <= self.boardCoords[col][0] + 100 and mouseY >= self.boardCoords[col][1] + (row * 30) and mouseY <= self.boardCoords[col][1] + (row * 30) + 30:
                     extra += 60
                 row += 1
         
